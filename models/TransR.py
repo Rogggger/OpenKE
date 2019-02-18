@@ -5,11 +5,11 @@ from .Model import Model
 
 class TransR(Model):
 	r'''
-	TransR first projects entities from entity space to corresponding relation space 
-	and then builds translations between projected entities. 
+	TransR first projects entities from entity space to corresponding relation space
+	and then builds translations between projected entities.
 	'''
 	def _transfer(self, transfer_matrix, embeddings):
-		return tf.batch_matmul(transfer_matrix, embeddings)
+		return tf.matmul(transfer_matrix, embeddings)
 
 	def _calc(self, h, t, r):
 		return abs(h + r - t)
